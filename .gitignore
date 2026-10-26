@@ -1,0 +1,19 @@
+# Downloaded source data
+/data/raw/
+
+# Local credentials and machine-specific configuration
+.env
+.env.*
+*.pgpass
+pgpass.conf
+
+# Power BI local cache and temporary files
+.pbi/
+*.pbix.tmp
+*.tmp
+~$*
+
+# Editor / OS files
+.DS_Store
+Thumbs.db
+.vscode/
