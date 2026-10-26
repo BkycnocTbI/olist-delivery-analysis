@@ -1,0 +1,23 @@
+// Create each calculated column separately in the table 'public orders_enriched'.
+
+Delay Days =
+IF(
+    'public orders_enriched'[order_status] = "delivered"
+        && NOT(ISBLANK('public orders_enriched'[order_delivered_customer_date]))
+        && NOT(ISBLANK('public orders_enriched'[order_estimated_delivery_date])),
+    INT('public orders_enriched'[order_delivered_customer_date])
+        - INT('public orders_enriched'[order_estimated_delivery_date]),
+    BLANK()
+)
+
+// Create the following column after Delay Days.
+Delay Group =
+SWITCH(
+    TRUE(),
+    ISBLANK('public orders_enriched'[Delay Days]), BLANK(),
+    'public orders_enriched'[Delay Days] <= 0, "0. On time",
+    'public orders_enriched'[Delay Days] <= 3, "1. Late 1–3 days",
+    'public orders_enriched'[Delay Days] <= 7, "2. Late 4–7 days",
+    'public orders_enriched'[Delay Days] <= 14, "3. Late 8–14 days",
+    "4. Late 15+ days"
+)

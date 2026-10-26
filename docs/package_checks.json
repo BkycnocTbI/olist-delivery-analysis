@@ -1,0 +1,145 @@
+{
+  "date": "2026-10-26",
+  "scope": "Artifact integrity, report definition, export and reference-result reconciliation. No fresh database execution.",
+  "artifact_checks_passed": true,
+  "checks": {
+    "pbix_matches_original": true,
+    "pbix_zip_integrity": true,
+    "one_report_page": true,
+    "expected_visuals": true,
+    "chart_titles": true,
+    "chart_subtitles_hidden": true,
+    "purchase_timestamp_slicer": true,
+    "between_slicer": true,
+    "expected_result_keys_unique": true,
+    "delivered_population_reconciles": true,
+    "timeliness_population_reconciles": true,
+    "rated_population_reconciles": true,
+    "rating_missingness_reconciles": true,
+    "late_rating_buckets_reconcile": true,
+    "review_extra_rows_reconcile": true,
+    "late_rate_arithmetic": true,
+    "sp_rj_volume_reconciles": true,
+    "sp_rj_share_arithmetic": true,
+    "local_markdown_links_resolve": true,
+    "seven_sql_scripts": true,
+    "two_calculated_columns": true,
+    "seven_documented_measures": true,
+    "export_one_page": true,
+    "export_headline_values": true,
+    "export_titles": true,
+    "dashboard_preview_exists": true,
+    "no_raw_data_committed": true
+  },
+  "missing_links": [],
+  "visual_counts": {
+    "cardVisual": 3,
+    "clusteredBarChart": 2,
+    "clusteredColumnChart": 1,
+    "slicer": 1,
+    "textbox": 2
+  },
+  "documented_measures": [
+    "Delivered Orders",
+    "Analyzed Deliveries",
+    "Late Orders",
+    "Late Delivery Rate",
+    "Avg Delivery Days",
+    "Avg Review Score",
+    "Orders With Score"
+  ],
+  "documented_columns": [
+    "Delay Days",
+    "Delay Group"
+  ],
+  "pbix_sha256": "5b29fa94ff3f234d8f064fa0bb60601f335082f72242c4e8a1db98ac54ee9f76",
+  "sql_execution_during_packaging": false,
+  "semantic_model_decompiled": false,
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 246,
+      "sha256": "500d290e096555032e83580e8c0cf8a95e7ddee20d0b7a281d6c968efdc62b90"
+    },
+    {
+      "path": "data/README.md",
+      "bytes": 991,
+      "sha256": "f5f956cbfb3175474c7e6d3fdec31351fe5b3dd7fd36014a9dae7916faa8578c"
+    },
+    {
+      "path": "dax/calculated_columns.dax",
+      "bytes": 911,
+      "sha256": "001ecdf7800e3976211ef271fe180881e9cedf454026be8d292610624f54e00f"
+    },
+    {
+      "path": "dax/measures.dax",
+      "bytes": 1587,
+      "sha256": "5be6a2ce65a397a56757fd57a92d2fb41e534d2ff50a81c1b2bb0e0284e07828"
+    },
+    {
+      "path": "docs/dashboard.png",
+      "bytes": 190205,
+      "sha256": "ac29d115a18da8b2e96d6915ed526cab02b38e235b87f300330b1e3ecc541c1d"
+    },
+    {
+      "path": "docs/expected_results.csv",
+      "bytes": 2865,
+      "sha256": "fa35b88decf1134b9c9227652c3697daf63b906416b725bcc8b25ff7dafbbe4e"
+    },
+    {
+      "path": "docs/methodology.md",
+      "bytes": 4656,
+      "sha256": "a9597c76d7a1b9188e7c70145265177568a8c215182751256d84dad8c79af1bb"
+    },
+    {
+      "path": "docs/validation.md",
+      "bytes": 2500,
+      "sha256": "70876d8aa51270c2dc774625ffba2c2869feab9f5a47b0abf59d483816069a90"
+    },
+    {
+      "path": "powerbi/olist_delivery_dashboard.pbix",
+      "bytes": 10815295,
+      "sha256": "5b29fa94ff3f234d8f064fa0bb60601f335082f72242c4e8a1db98ac54ee9f76"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7441,
+      "sha256": "aa3264db51c8bdaaa46e1e807f6a9efea9678043d93b2b208a09e2439c3f1c0a"
+    },
+    {
+      "path": "sql/00_schema.sql",
+      "bytes": 983,
+      "sha256": "43e682db1973b47cfa5afc61b3d308847e2cc2b0bfd9895ccb5d19b57558afcd"
+    },
+    {
+      "path": "sql/01_import_psql.sql",
+      "bytes": 823,
+      "sha256": "ae7c5dfcc2b8ab313b9077c4f7c1ada90811b6b9fa73cca2d031c4e03b7d7763"
+    },
+    {
+      "path": "sql/02_views.sql",
+      "bytes": 621,
+      "sha256": "265f40011425f4a859bfed46857f4670cf8c0251e5ade6e96b92810f6fcefdfe"
+    },
+    {
+      "path": "sql/03_data_quality.sql",
+      "bytes": 2766,
+      "sha256": "91580116b616dbb77bc36ca8022f7389ab04c44c53fd9e78702b86727b6ef9ad"
+    },
+    {
+      "path": "sql/04_delivery_metrics.sql",
+      "bytes": 1609,
+      "sha256": "ba1090e07c79aeac4e107827b05a6c336afe8e61e80860fb848a894556a43aad"
+    },
+    {
+      "path": "sql/05_state_analysis.sql",
+      "bytes": 1710,
+      "sha256": "19db3298de055c07b1af555b076c5a17652ea41498de39a750ea8c5d7d94e1c6"
+    },
+    {
+      "path": "sql/06_review_analysis.sql",
+      "bytes": 2533,
+      "sha256": "efb5974a7e580ad5d44b8492cf2d4a7b3b155c663bd402070b81d1078a2bf7f5"
+    }
+  ]
+}

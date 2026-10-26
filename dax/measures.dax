@@ -1,0 +1,56 @@
+// Create each measure separately. These formulas are documentation, not a batch.
+// Formats: counts = whole number; Rate = percentage, 2 decimals;
+// Avg Delivery Days and Avg Review Score = decimal number, 2 decimals.
+
+Delivered Orders =
+CALCULATE(
+    COUNTROWS('public orders_enriched'),
+    'public orders_enriched'[order_status] = "delivered"
+)
+
+Analyzed Deliveries =
+CALCULATE(
+    [Delivered Orders],
+    NOT(ISBLANK('public orders_enriched'[order_delivered_customer_date])),
+    NOT(ISBLANK('public orders_enriched'[order_estimated_delivery_date]))
+)
+
+Late Orders =
+CALCULATE(
+    [Analyzed Deliveries],
+    FILTER(
+        'public orders_enriched',
+        INT('public orders_enriched'[order_delivered_customer_date])
+            > INT('public orders_enriched'[order_estimated_delivery_date])
+    )
+)
+
+Late Delivery Rate =
+DIVIDE(
+    [Late Orders],
+    [Analyzed Deliveries]
+)
+
+Avg Delivery Days =
+CALCULATE(
+    AVERAGEX(
+        'public orders_enriched',
+        'public orders_enriched'[order_delivered_customer_date]
+            - 'public orders_enriched'[order_purchase_timestamp]
+    ),
+    'public orders_enriched'[order_status] = "delivered",
+    NOT(ISBLANK('public orders_enriched'[order_purchase_timestamp])),
+    NOT(ISBLANK('public orders_enriched'[order_delivered_customer_date]))
+)
+
+Avg Review Score =
+CALCULATE(
+    AVERAGE('public orders_enriched'[order_score]),
+    NOT(ISBLANK('public orders_enriched'[Delay Days]))
+)
+
+Orders With Score =
+CALCULATE(
+    COUNT('public orders_enriched'[order_score]),
+    NOT(ISBLANK('public orders_enriched'[Delay Days]))
+)
